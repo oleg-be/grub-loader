@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-# Install required packages
+# Install required packages using the available package manager
 if command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --needed grub efibootmgr os-prober
 elif command -v apt-get >/dev/null 2>&1; then

@@ -1,1 +1,2 @@
+title = "Dark Theme"
 "GRUB Dark Theme"
