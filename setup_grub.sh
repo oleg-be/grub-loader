@@ -14,6 +14,8 @@ if command -v os-prober >/dev/null 2>&1; then
     os-prober
 fi
 
+# Built-in themes live under the themes/ directory. Initially this repository
+# provides "default", "dark" and "light" folders but you can add more.
 theme_root="$(dirname "$0")/themes"
 if [ ! -d "$theme_root" ]; then
     echo "No themes directory found at $theme_root" >&2
