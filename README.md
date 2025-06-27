@@ -29,3 +29,4 @@ sudo ./setup_grub.sh
 ```
 
 Follow the prompts to install packages and select a theme.
+

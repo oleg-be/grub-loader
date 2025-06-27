@@ -6,9 +6,11 @@ if command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --needed grub efibootmgr os-prober
 elif command -v apt-get >/dev/null 2>&1; then
     sudo apt-get update
-    sudo apt-get install -y grub-efi-amd64 efibootmgr os-prober
+    sudo apt-get install -y grub efibootmgr os-prober
 elif command -v dnf >/dev/null 2>&1; then
-    sudo dnf install -y grub2-efi efibootmgr os-prober
+    sudo dnf install -y grub efibootmgr os-prober
+elif command -v zypper >/dev/null 2>&1; then
+    sudo zypper install -y grub efibootmgr os-prober
 else
     echo "No supported package manager found. Please install grub, efibootmgr and os-prober manually." >&2
 fi
@@ -19,6 +21,8 @@ if command -v os-prober >/dev/null 2>&1; then
     os-prober
 fi
 
+# Built-in themes live under the themes/ directory. Initially this repository
+# provides "default", "dark" and "light" folders but you can add more.
 theme_root="$(dirname "$0")/themes"
 if [ ! -d "$theme_root" ]; then
     echo "No themes directory found at $theme_root" >&2
