@@ -4,8 +4,15 @@ set -e
 # Install required packages
 if command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --needed grub efibootmgr os-prober
+elif command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y grub efibootmgr os-prober
+elif command -v dnf >/dev/null 2>&1; then
+    sudo dnf install -y grub efibootmgr os-prober
+elif command -v zypper >/dev/null 2>&1; then
+    sudo zypper install -y grub efibootmgr os-prober
 else
-    echo "pacman not found. Please install grub, efibootmgr and os-prober manually." >&2
+    echo "No supported package manager found. Please install grub, efibootmgr and os-prober manually." >&2
 fi
 
 # Run os-prober if available
